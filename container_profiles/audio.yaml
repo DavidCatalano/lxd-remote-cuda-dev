@@ -1,0 +1,6 @@
+name: audio
+description: Forward container audio to remote PulseAudio server (Mac)
+config:
+  environment.PULSE_SERVER: tcp:10.0.0.254     # <-- Your Mac's IP here
+  raw.idmap: both 1000 1000
+devices: {}

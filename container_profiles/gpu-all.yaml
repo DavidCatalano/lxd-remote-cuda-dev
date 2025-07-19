@@ -1,0 +1,7 @@
+name: gpu-all
+description: Use all GPUs (via LXD managed device)
+config: {}
+devices:
+  all-gpus:
+    type: gpu
+project: ""

@@ -1,0 +1,26 @@
+config:
+  user.user-data: |
+    #cloud-config
+    ssh_pwauth: false
+    users:
+      - name: ubuntu
+        ssh_authorized_keys:
+          - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK1NCfMsTieFN+TGxQgA99s5t+TrayCHbXCKfTwEn0LO localuser@Computer-Name.local
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+  user.network-config: |
+    version: 2
+    ethernets:
+      eth0:
+        dhcp4: false
+        addresses:
+          - 10.0.0.154/24
+        gateway4: 10.0.0.1
+        nameservers:
+          addresses: [1.1.1.1, 8.8.8.8]
+description: "SSH enabled on 10.0.0.154"
+devices:
+  eth0:
+    name: eth0
+    network: br0
+    type: nic

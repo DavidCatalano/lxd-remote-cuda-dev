@@ -1,0 +1,11 @@
+# Not the recommended way to do this. Other examples use simpler GPU bindings.
+# Typically, 01:00.0 would correspond to GPU 0 and 03:00.0 to GPU 1.
+# These PCI IDs were extracted via lspci | grep -i nvidia.
+
+config: {}
+description: "Passthrough only GPU 1"
+devices:
+  gpu0:
+    type: gpu
+    pci: <GPU1_PCI_ID>
+name: gpu1

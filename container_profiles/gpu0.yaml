@@ -1,0 +1,8 @@
+name: gpu0
+description: Use only GPU 0 (via LXD managed device)
+config: {}
+devices:
+  gpu0:
+    id: "0"
+    type: gpu
+project: ""

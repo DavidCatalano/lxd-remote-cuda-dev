@@ -1,0 +1,12 @@
+name: default-resources
+description: Default resource limits for containers
+config:
+  limits.cpu: "16"
+  limits.disk.priority: "5"
+  limits.memory: 16GB
+devices:
+  root:
+    path: /
+    pool: sandboxes
+    type: disk
+project: ""
