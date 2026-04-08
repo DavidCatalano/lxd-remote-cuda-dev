@@ -1,6 +1,7 @@
 name: gpu0
 description: Use only GPU 0 (via LXD managed device)
-config: {}
+config:
+  nvidia.runtime: "true"
 devices:
   gpu0:
     id: "0"

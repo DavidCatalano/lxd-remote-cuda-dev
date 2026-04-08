@@ -28,22 +28,8 @@ Create a container using Ubuntu 22.04 with GPU1 and default resource limits:
 > Use `gpu0` if you are *GPU poor*
 
 ```bash
-lxc init "ubuntu":22.04 sbox-lg-base-container -p ssh-155 -p default-resources -p gpu0 -p audio --no-start
+lxc init "ubuntu":22.04 sbox-lg-base-container -p ssh-155 -p default-resources -p gpu0 -p audio
 ```
-> --no-start lets you apply GPU driver version and push files before container boots and installs packages.
-
-### GPU Environment Prep
-**Important GPU Driver Consideration**
-It is essential to have the container Nvidia driver match the host. 
-
-The host gpu driver may be behind a minor or even major version due to system reboot requirements. Without special consideration the container would download the latest drivers compatible with the GPU. 
-
-Set the host GPU driver version as an environment variable in the container at the time of creation.
-
-```bash
-lxc config set sbox-lg-base-container environment.HOST_NVIDIA_DRIVER "$(ssh devbox 'nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -n1')"
-```
-> Note: Substitute 'devbox' with your host server's hostname or ip (e.g. 10.0.0.10)
 
 Start the container:
 
@@ -68,14 +54,6 @@ Install base packages
 ```bash
 sudo /tmp/container_scripts/container_custom_image_sbox-lg_install.sh
 ```
-
-Install GPU support
-```bash
-sudo /tmp/container_scripts/container_nvidia_install.sh
-```
-> NOTE: This script will utilize the `$HOST_NVIDIA_DRIVER` set above.
-> NOTE: user the optional parameter `upgrade` to uninstall drivers first.
-
 
 **Verify GPU & Audio:**
 

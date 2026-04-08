@@ -1,6 +1,7 @@
 name: gpu-all
 description: Use all GPUs (via LXD managed device)
-config: {}
+config:
+  nvidia.runtime: "true"
 devices:
   all-gpus:
     type: gpu
